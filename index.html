@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090909">
+<title>REALISTIC LAUNCHER</title>
+<style>
+:root{--red:#ff2424;--red2:#a90000;--bg:#080808;--panel:#141414;--muted:#aaa;--line:#4b1111}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at top right,#390707 0,#100707 35%,var(--bg) 75%);color:#f5f5f5;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh}
+.wrap{max-width:850px;margin:auto;padding:20px 16px 34px}
+header{display:flex;align-items:center;gap:13px;padding:8px 0 22px}
+.logo{width:58px;height:58px;border:2px solid var(--red);border-radius:15px;background:linear-gradient(145deg,#350000,#111);display:grid;place-items:center;font-size:28px;box-shadow:0 0 22px #ff202033}
+h1{font-size:clamp(20px,5vw,29px);line-height:1.05;margin:0;letter-spacing:1px}
+h1 span{color:var(--red)}
+.sub{color:#aaa;font-size:12px;margin-top:6px;letter-spacing:2px;text-transform:uppercase}
+.hero{border:1px solid #7c1717;border-radius:20px;padding:22px;background:linear-gradient(110deg,#1a0808ed,#090909ef),repeating-linear-gradient(135deg,transparent 0 12px,#a9000015 12px 14px);box-shadow:0 12px 35px #0008}
+.tag{display:inline-block;border:1px solid #7a2020;color:#ff7777;border-radius:99px;padding:5px 10px;font-size:11px;letter-spacing:1px;text-transform:uppercase}
+.hero h2{font-size:clamp(25px,7vw,42px);margin:14px 0 7px;line-height:1.05}
+.hero p{color:#c8c8c8;margin:0;line-height:1.5}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.card{background:linear-gradient(145deg,#191919,#0d0d0d);border:1px solid #303030;border-radius:16px;padding:16px;min-width:0}
+.card h3{font-size:15px;margin:0 0 8px}
+.card p{font-size:13px;color:#aaa;line-height:1.45;margin:0}
+.icon{font-size:22px;margin-bottom:10px;display:block}
+.status{display:flex;align-items:center;gap:8px;font-size:12px;color:#cfcfcf;margin-top:14px}
+.dot{width:8px;height:8px;border-radius:50%;background:#f33;box-shadow:0 0 10px #f33}
+.actions{display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px}
+button{font:inherit;cursor:pointer;border-radius:13px;padding:15px 16px;font-weight:750}
+.primary{border:1px solid #ff5555;color:white;background:linear-gradient(100deg,#a90000,#ff2424,#9e0000);box-shadow:0 7px 24px #ff00002b;font-size:17px}
+.secondary{border:1px solid #444;background:#171717;color:#eee}
+.nav{display:flex;gap:8px;overflow:auto;margin:18px 0 0;padding-bottom:3px}
+.nav button{white-space:nowrap;padding:10px 13px;font-size:12px}
+.nav button.active{border-color:#ff3333;background:#300808;color:#fff}
+.section{margin-top:15px}
+.section h3{margin:0 0 10px;font-size:17px}
+.list{display:grid;gap:8px}
+.item{display:flex;align-items:flex-start;gap:10px;background:#111;border:1px solid #292929;border-radius:12px;padding:12px}
+.badge{font-size:12px;color:#ff7777;border:1px solid #5a1a1a;border-radius:8px;padding:4px 7px;min-width:32px;text-align:center}
+.item strong{font-size:13px;display:block;margin-bottom:3px}
+.item small{font-size:12px;color:#aaa;line-height:1.4}
+footer{color:#777;font-size:11px;line-height:1.5;text-align:center;margin-top:22px}
+.notice{display:none;margin-top:10px;padding:12px;border-radius:10px;border:1px solid #773030;background:#210808;color:#ffdada;font-size:13px;line-height:1.4}
+@media(min-width:620px){.actions{grid-template-columns:1.2fr 1fr}.hero{padding:30px}.grid{gap:14px}}
+@media(max-width:390px){.grid{grid-template-columns:1fr}.wrap{padding:15px 12px 25px}}
+</style>
+
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="theme-color" content="#090909">
+<meta name="mobile-web-app-capable" content="yes">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo" aria-hidden="true">⛏️</div>
+    <div><h1>REALISTIC <span>LAUNCHER</span></h1><div class="sub">Android • Java Survival</div></div>
+  </header>
+  <main>
+    <section class="hero">
+      <span class="tag">Projeto independente • Protótipo 0.1</span>
+      <h2>Sobreviva.<br><span style="color:#ff3030">Explore.</span> Construa.</h2>
+      <p>Seu ponto de partida para uma experiência de sobrevivência mais realista no Minecraft Java para Android.</p>
+      <div class="status"><span class="dot"></span><span>Interface demonstrativa — motor de jogo ainda não conectado</span></div>
+      <div class="actions">
+        <button class="primary" id="play">▶ &nbsp; JOGAR</button>
+        <button class="secondary" id="mods">▦ &nbsp; VER MODPACK</button>
+      </div>
+      <div class="notice" id="notice" role="status"></div>
+    </section>
+    <nav class="nav" aria-label="Menu principal">
+      <button class="secondary active" data-tab="inicio">Início</button>
+      <button class="secondary" data-tab="modpack">Modpack</button>
+      <button class="secondary" data-tab="config">Configurações</button>
+      <button class="secondary" data-tab="sobre">Sobre</button>
+    </nav>
+    <section class="section" id="content">
+      <h3>Seu perfil de sobrevivência</h3>
+      <div class="grid">
+        <article class="card"><span class="icon">🌲</span><h3>Sobrevivência realista</h3><p>Foco em exploração, recursos, clima e progressão de sobrevivência.</p></article>
+        <article class="card"><span class="icon">🧰</span><h3>Modpack próprio</h3><p>Uma seleção de mods compatíveis será definida depois de escolhermos a versão do Minecraft.</p></article>
+      </div>
+    </section>
+  </main>
+  <footer>REALISTIC LAUNCHER é um projeto independente e não é afiliado à Mojang ou Microsoft.<br>Este protótipo visual não instala nem inicia o Minecraft.</footer>
+</div>
+<script>
+const content=document.getElementById('content');
+const notice=document.getElementById('notice');
+const pages={
+ inicio:`<h3>Seu perfil de sobrevivência</h3><div class="grid"><article class="card"><span class="icon">🌲</span><h3>Sobrevivência realista</h3><p>Foco em exploração, recursos, clima e progressão de sobrevivência.</p></article><article class="card"><span class="icon">🧰</span><h3>Modpack próprio</h3><p>Uma seleção de mods compatíveis será definida depois de escolhermos a versão do Minecraft.</p></article></div>`,
+ modpack:`<h3>Meu Modpack</h3><div class="list"><div class="item"><span class="badge">01</span><div><strong>Versão do Minecraft</strong><small>A definir conforme compatibilidade com Android e mods.</small></div></div><div class="item"><span class="badge">02</span><div><strong>Loader de mods</strong><small>Vamos escolher Fabric ou Forge de acordo com os mods desejados.</small></div></div><div class="item"><span class="badge">03</span><div><strong>Lista de mods</strong><small>Prioridade para exploração, natureza e otimização do desempenho.</small></div></div></div>`,
+ config:`<h3>Configurações</h3><div class="list"><div class="item"><span class="badge">RAM</span><div><strong>Memória do jogo</strong><small>Será ajustada de acordo com a memória disponível no seu celular.</small></div></div><div class="item"><span class="badge">FPS</span><div><strong>Desempenho</strong><small>Vamos priorizar estabilidade antes de adicionar muitos mods.</small></div></div></div>`,
+ sobre:`<h3>Sobre o projeto</h3><div class="card"><h3>REALISTIC LAUNCHER 0.1</h3><p>Protótipo de interface feito como primeiro passo do projeto. O próximo passo é preparar o ambiente Android e planejar a integração com um launcher Java compatível.</p></div>`
+};
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{
+ document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));
+ content.innerHTML=pages[b.dataset.tab];
+ notice.style.display='none';
+}));
+document.getElementById('mods').addEventListener('click',()=>{
+ document.querySelector('[data-tab="modpack"]').click();
+ content.scrollIntoView({behavior:'smooth',block:'start'});
+});
+document.getElementById('play').addEventListener('click',()=>{
+ notice.textContent='O botão está funcionando no protótipo! Para iniciar o jogo de verdade, ainda precisamos integrar um motor/launcher Java compatível e a instalação legítima do Minecraft.';
+ notice.style.display='block';
+});
+</script>
+
+<script>
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch(() => {}));
+}
+</script>
+</body>
+</html>
