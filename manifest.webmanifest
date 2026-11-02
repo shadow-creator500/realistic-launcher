@@ -1,12 +1,9 @@
 {
   "name": "REALISTIC LAUNCHER",
   "short_name": "Realistic",
-  "description": "Protótipo de launcher para projeto de sobrevivência Minecraft Java no Android.",
-  "start_url": "./index.html",
-  "scope": "./",
+  "start_url": "./",
   "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#080808",
-  "theme_color": "#090909",
-  "icons": [{"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+  "background_color": "#080708",
+  "theme_color": "#080708",
+  "description": "Protótipo de launcher de sobrevivência realista."
 }

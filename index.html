@@ -2,116 +2,181 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#090909">
-<title>REALISTIC LAUNCHER</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080708">
+<meta name="description" content="REALISTIC LAUNCHER — sobrevivência realista para Minecraft Java no Android.">
+<link rel="manifest" href="manifest.webmanifest">
+<title>REALISTIC LAUNCHER — Survival</title>
 <style>
-:root{--red:#ff2424;--red2:#a90000;--bg:#080808;--panel:#141414;--muted:#aaa;--line:#4b1111}
+:root{color-scheme:dark;--red:#f01825;--red2:#a9000b;--bg:#080708;--panel:#111011;--muted:#aaa4a8;--line:rgba(255,28,42,.38);--white:#f7f4f5}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at top right,#390707 0,#100707 35%,var(--bg) 75%);color:#f5f5f5;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh}
-.wrap{max-width:850px;margin:auto;padding:20px 16px 34px}
-header{display:flex;align-items:center;gap:13px;padding:8px 0 22px}
-.logo{width:58px;height:58px;border:2px solid var(--red);border-radius:15px;background:linear-gradient(145deg,#350000,#111);display:grid;place-items:center;font-size:28px;box-shadow:0 0 22px #ff202033}
-h1{font-size:clamp(20px,5vw,29px);line-height:1.05;margin:0;letter-spacing:1px}
-h1 span{color:var(--red)}
-.sub{color:#aaa;font-size:12px;margin-top:6px;letter-spacing:2px;text-transform:uppercase}
-.hero{border:1px solid #7c1717;border-radius:20px;padding:22px;background:linear-gradient(110deg,#1a0808ed,#090909ef),repeating-linear-gradient(135deg,transparent 0 12px,#a9000015 12px 14px);box-shadow:0 12px 35px #0008}
-.tag{display:inline-block;border:1px solid #7a2020;color:#ff7777;border-radius:99px;padding:5px 10px;font-size:11px;letter-spacing:1px;text-transform:uppercase}
-.hero h2{font-size:clamp(25px,7vw,42px);margin:14px 0 7px;line-height:1.05}
-.hero p{color:#c8c8c8;margin:0;line-height:1.5}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
-.card{background:linear-gradient(145deg,#191919,#0d0d0d);border:1px solid #303030;border-radius:16px;padding:16px;min-width:0}
-.card h3{font-size:15px;margin:0 0 8px}
-.card p{font-size:13px;color:#aaa;line-height:1.45;margin:0}
-.icon{font-size:22px;margin-bottom:10px;display:block}
-.status{display:flex;align-items:center;gap:8px;font-size:12px;color:#cfcfcf;margin-top:14px}
-.dot{width:8px;height:8px;border-radius:50%;background:#f33;box-shadow:0 0 10px #f33}
-.actions{display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px}
-button{font:inherit;cursor:pointer;border-radius:13px;padding:15px 16px;font-weight:750}
-.primary{border:1px solid #ff5555;color:white;background:linear-gradient(100deg,#a90000,#ff2424,#9e0000);box-shadow:0 7px 24px #ff00002b;font-size:17px}
-.secondary{border:1px solid #444;background:#171717;color:#eee}
-.nav{display:flex;gap:8px;overflow:auto;margin:18px 0 0;padding-bottom:3px}
-.nav button{white-space:nowrap;padding:10px 13px;font-size:12px}
-.nav button.active{border-color:#ff3333;background:#300808;color:#fff}
-.section{margin-top:15px}
-.section h3{margin:0 0 10px;font-size:17px}
-.list{display:grid;gap:8px}
-.item{display:flex;align-items:flex-start;gap:10px;background:#111;border:1px solid #292929;border-radius:12px;padding:12px}
-.badge{font-size:12px;color:#ff7777;border:1px solid #5a1a1a;border-radius:8px;padding:4px 7px;min-width:32px;text-align:center}
-.item strong{font-size:13px;display:block;margin-bottom:3px}
-.item small{font-size:12px;color:#aaa;line-height:1.4}
-footer{color:#777;font-size:11px;line-height:1.5;text-align:center;margin-top:22px}
-.notice{display:none;margin-top:10px;padding:12px;border-radius:10px;border:1px solid #773030;background:#210808;color:#ffdada;font-size:13px;line-height:1.4}
-@media(min-width:620px){.actions{grid-template-columns:1.2fr 1fr}.hero{padding:30px}.grid{gap:14px}}
-@media(max-width:390px){.grid{grid-template-columns:1fr}.wrap{padding:15px 12px 25px}}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 70% 10%,#310609 0%,#10090b 32%,var(--bg) 70%);color:var(--white);font-family:Inter,Roboto,"Segoe UI",system-ui,sans-serif;min-height:100vh}
+button{font:inherit;cursor:pointer}
+button:focus-visible{outline:2px solid #ff5962;outline-offset:3px}
+.app{display:grid;grid-template-columns:252px minmax(0,1fr);min-height:100vh}
+.sidebar{position:sticky;top:0;height:100vh;padding:22px 16px;background:linear-gradient(180deg,rgba(0,0,0,.94),rgba(12,7,8,.98));border-right:1px solid var(--line);display:flex;flex-direction:column;z-index:5}
+.brand{padding:4px 8px 20px;text-align:center;border-bottom:1px solid rgba(255,255,255,.07)}
+.logo{width:106px;height:106px;border:2px solid #e31927;border-radius:22px;margin:0 auto 10px;display:grid;place-items:center;background:radial-gradient(circle at 50% 20%,#3b1015,#080708 72%);box-shadow:0 0 25px #c4001533}
+.logo .block{font-size:56px;filter:drop-shadow(0 7px 0 #26131a)}
+.brand-name{font-size:29px;font-weight:1000;letter-spacing:-1.4px;line-height:.95;text-shadow:2px 3px #3a060a}
+.brand-name span{display:block;color:var(--red);font-style:italic;font-size:31px}
+.version{font-size:13px;color:#b8afb3;margin-top:16px}
+.nav{display:grid;gap:6px;padding-top:18px}
+.nav button{display:flex;align-items:center;gap:13px;text-align:left;padding:13px 14px;border:1px solid transparent;background:transparent;color:#d2cdd0;border-radius:12px;font-size:15px}
+.nav button .ico{width:26px;text-align:center;font-size:21px}
+.nav button.active,.nav button:hover{background:linear-gradient(90deg,#650810,#230609);border-color:#a50c19;color:#fff;box-shadow:inset 3px 0 #ff2633,0 0 16px #f0182514}
+.side-slogan{margin-top:auto;padding:22px 8px 8px;color:#f52a38;font-family:Georgia,serif;font-style:italic;font-size:19px;transform:rotate(-4deg)}
+main{padding:22px clamp(16px,2.2vw,34px) 36px;min-width:0;max-width:1700px;width:100%;margin:0 auto}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:15px}
+.welcome h1{font-size:25px;margin:0 0 3px;letter-spacing:-.5px}.welcome p{margin:0;color:#d1cbd0;font-size:15px}
+.top-actions{display:flex;gap:12px}.icon-btn{width:42px;height:42px;border-radius:12px;border:1px solid #34272b;background:#111011;color:var(--red);font-size:22px}
+.hero{position:relative;overflow:hidden;min-height:285px;border:1px solid #a7101b;border-radius:19px;background:linear-gradient(90deg,rgba(0,0,0,.94) 0%,rgba(7,5,6,.72) 42%,rgba(8,4,5,.13) 100%),radial-gradient(ellipse at 78% 40%,#8d2926 0%,#402024 24%,#151012 54%,#050505 76%);box-shadow:0 12px 34px #0007,inset 0 0 35px #ef152018;display:flex;align-items:center;padding:34px 36px}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 0 48%,#e10b1d12 48.2% 49%,transparent 49.2%),repeating-linear-gradient(145deg,transparent 0 45px,#ff1c2b09 46px 48px,transparent 49px 90px);pointer-events:none}
+.hero:after{content:"";position:absolute;right:3%;bottom:-12%;width:42%;height:80%;opacity:.85;background:linear-gradient(180deg,#231216,#080708);clip-path:polygon(0 36%,10% 36%,10% 19%,22% 19%,22% 28%,35% 28%,35% 0,58% 0,58% 18%,75% 18%,75% 35%,100% 35%,100% 100%,0 100%);border-top:2px solid #702027;filter:drop-shadow(0 0 20px #ef17252b)}
+.hero-content{position:relative;z-index:1;max-width:620px}
+.eyebrow{display:inline-block;color:#ff9299;border:1px solid #71121c;border-radius:99px;padding:7px 12px;font-size:11px;letter-spacing:1.3px;text-transform:uppercase;margin-bottom:17px;background:#160709cc}
+.hero-title{margin:0;font-size:clamp(30px,4vw,54px);font-weight:1000;line-height:1.02;letter-spacing:-1.7px;text-shadow:0 3px #000}
+.hero-title span{color:var(--red)}
+.hero-sub{font-size:14px;font-weight:700;margin:12px 0 18px;color:#f1e8eb}
+.hero-tagline{font-family:Georgia,serif;font-style:italic;color:#f0dce0;font-size:19px;line-height:1.3;margin:0;max-width:380px}
+.hero-tagline em{color:#ff3441}
+.action-row{display:grid;grid-template-columns:minmax(270px,1.05fr) minmax(240px,1fr) 120px;gap:18px;align-items:center;margin:17px 0}
+.modpack-card{display:flex;gap:16px;align-items:center;padding:14px;border:1px solid #2c2528;border-radius:17px;background:linear-gradient(120deg,#171517,#0b0a0b);min-height:148px}
+.thumb{flex:0 0 112px;height:112px;border-radius:13px;display:grid;place-items:center;font-size:50px;background:radial-gradient(circle at 50% 25%,#5c8444,#172c1c 45%,#171017 80%);border:1px solid #465b3b;overflow:hidden}
+.modpack-info h2{font-size:19px;margin:0 0 9px}.pill{font-size:11px;color:white;background:#a90b16;padding:4px 8px;border-radius:99px;vertical-align:middle;white-space:nowrap}
+.stat{font-size:13px;color:#d0c9ce;margin:5px 0;display:flex;gap:8px;align-items:center}.stat b{color:#ff3440}
+.play-btn{border:1px solid #ff4a53;border-radius:14px;min-height:96px;color:white;font-size:clamp(22px,2.8vw,34px);font-weight:900;background:linear-gradient(110deg,#8c0009,#fa1725 48%,#a7000b);box-shadow:0 0 20px #f0182530,inset 0 1px #ff8a91;transform:skew(-7deg);transition:filter .15s,transform .15s}
+.play-btn span{display:inline-block;transform:skew(7deg)}.play-btn:hover{filter:brightness(1.18);transform:skew(-7deg) translateY(-2px)}
+.options-btn{min-height:96px;border:1px solid #393337;border-radius:14px;background:linear-gradient(140deg,#242124,#111011);color:#f5f0f2;font-weight:700}.options-btn span{display:block;font-size:26px;margin-bottom:5px}
+.lower{display:grid;grid-template-columns:minmax(245px,.8fr) minmax(0,2fr);gap:18px;margin-top:16px}
+.panel{border:1px solid #a10d19;border-radius:17px;background:linear-gradient(145deg,#100d0e,#080708);padding:19px;box-shadow:inset 0 0 20px #f0182508}
+.panel h2{color:#ff2635;margin:0 0 14px;font-size:22px;display:flex;align-items:center;gap:10px}
+.plan-list{display:grid;gap:12px;list-style:none;padding:0;margin:0}.plan-list li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;color:#e4dfe2;font-size:13px}.num{display:grid;place-items:center;width:25px;height:25px;border-radius:50%;background:linear-gradient(135deg,#ff2432,#99020b);font-weight:900;color:white}
+.steps-layout{display:grid;grid-template-columns:minmax(0,1fr) 205px;gap:18px}
+.steps h3{margin:0 0 7px;color:#ff4550;font-size:18px}.steps p{font-size:13px;line-height:1.5;margin:0 0 10px;color:#ddd4d8}.steps ol{margin:0;padding-left:20px;font-size:13px;line-height:1.75;color:#eee5e9}.steps li::marker{color:#ff3542}
+.tools{border:1px solid #66131a;border-radius:12px;padding:12px;background:#0c090a}.tools h4{color:#ff3542;font-size:12px;margin:0 0 12px}.tool{display:flex;gap:10px;align-items:center;font-size:12px;color:#ddd;margin:12px 0}.tool span{font-size:23px;width:30px;text-align:center}
+.bottom-cta{display:block;margin:17px auto 0;padding:13px 24px;max-width:420px;width:100%;border:1px solid #ff3440;border-radius:12px;color:white;font-weight:900;background:linear-gradient(100deg,#8d0008,#f01825,#97000b);box-shadow:0 0 20px #e20b1b25}
+.mobile-nav{display:none}
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);background:#201114;border:1px solid #f01825;color:#fff;padding:13px 17px;border-radius:12px;box-shadow:0 10px 30px #000a;z-index:20;opacity:0;pointer-events:none;transition:.2s;max-width:calc(100vw - 30px);text-align:center;font-size:14px}.toast.show{opacity:1;transform:translate(-50%,0)}
+.page-section{display:none}.page-section.visible{display:block}
+@media(max-width:980px){.app{grid-template-columns:205px minmax(0,1fr)}.sidebar{padding:16px 11px}.brand-name{font-size:24px}.brand-name span{font-size:26px}.action-row{grid-template-columns:1fr 1fr}.modpack-card{grid-column:1/-1}.play-btn,.options-btn{min-height:75px}.lower{grid-template-columns:1fr}.steps-layout{grid-template-columns:1fr 180px}}
+@media(max-width:650px){.app{display:block}.sidebar{display:none}main{padding:15px 13px 90px}.topbar{margin-bottom:12px}.welcome h1{font-size:20px}.welcome p{font-size:13px}.top-actions{gap:6px}.icon-btn{width:36px;height:36px}.hero{min-height:255px;padding:23px 19px;background:linear-gradient(90deg,rgba(0,0,0,.93),rgba(5,3,4,.62)),radial-gradient(ellipse at 80% 40%,#8d2926,#231216 55%,#050505 85%)}.hero:after{right:-3%;width:53%;opacity:.45}.hero-title{font-size:36px}.hero-sub{font-size:12px}.hero-tagline{font-size:17px}.eyebrow{font-size:9px;letter-spacing:.8px}.action-row{grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.modpack-card{grid-column:1/-1;min-height:120px;padding:11px;gap:12px}.thumb{flex-basis:88px;height:88px;font-size:42px}.modpack-info h2{font-size:17px}.stat{font-size:12px}.play-btn{min-height:72px;font-size:25px}.options-btn{min-height:72px}.lower{gap:12px;margin-top:12px}.panel{padding:15px}.panel h2{font-size:19px}.steps-layout{grid-template-columns:1fr}.tools{display:grid;grid-template-columns:1fr 1fr;gap:5px}.tools h4{grid-column:1/-1}.tool{margin:4px 0}.mobile-nav{position:fixed;display:grid;grid-template-columns:repeat(4,1fr);bottom:0;left:0;right:0;padding:7px 5px calc(7px + env(safe-area-inset-bottom));background:#090809f2;border-top:1px solid #64111a;z-index:10;backdrop-filter:blur(12px)}.mobile-nav button{background:transparent;border:0;color:#bcb5b9;font-size:11px;padding:5px 2px}.mobile-nav button span{display:block;font-size:19px;margin-bottom:3px}.mobile-nav button.active{color:#ff3542}.bottom-cta{font-size:14px}.plan-list li{font-size:12px}}
 </style>
-
-<link rel="manifest" href="./manifest.webmanifest">
-<meta name="theme-color" content="#090909">
-<meta name="mobile-web-app-capable" content="yes">
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <div class="logo" aria-hidden="true">⛏️</div>
-    <div><h1>REALISTIC <span>LAUNCHER</span></h1><div class="sub">Android • Java Survival</div></div>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand">
+    <div class="logo"><div class="block">🟩</div></div>
+    <div class="brand-name">REALISTIC <span>LAUNCHER</span></div>
+    <div class="version">Launcher v0.2.0 • Android</div>
+  </div>
+  <nav class="nav" aria-label="Menu principal">
+    <button class="active" data-page="inicio"><span class="ico">⌂</span>Início</button>
+    <button data-page="modpacks"><span class="ico">⬡</span>Modpacks</button>
+    <button data-page="config"><span class="ico">⚙</span>Configurações</button>
+    <button data-page="sobre"><span class="ico">ⓘ</span>Sobre</button>
+    <button data-page="sair"><span class="ico">⇥</span>Sair</button>
+  </nav>
+  <div class="side-slogan">Jogue do seu jeito!</div>
+</aside>
+<main>
+  <header class="topbar">
+    <div class="welcome"><h1>Fala, meu cria! 👊</h1><p>Pronto pra mais uma aventura?</p></div>
+    <div class="top-actions"><button class="icon-btn" data-message="Você não tem notificações novas." aria-label="Notificações">♧</button><button class="icon-btn" data-message="Área de perfil: em desenvolvimento." aria-label="Perfil">♛</button></div>
   </header>
-  <main>
-    <section class="hero">
-      <span class="tag">Projeto independente • Protótipo 0.1</span>
-      <h2>Sobreviva.<br><span style="color:#ff3030">Explore.</span> Construa.</h2>
-      <p>Seu ponto de partida para uma experiência de sobrevivência mais realista no Minecraft Java para Android.</p>
-      <div class="status"><span class="dot"></span><span>Interface demonstrativa — motor de jogo ainda não conectado</span></div>
-      <div class="actions">
-        <button class="primary" id="play">▶ &nbsp; JOGAR</button>
-        <button class="secondary" id="mods">▦ &nbsp; VER MODPACK</button>
+  <section class="page-section visible" id="inicio">
+    <div class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">Projeto independente • Protótipo 0.2</div>
+        <h2 class="hero-title">REALISTIC <span>CRAFT</span></h2>
+        <p class="hero-sub">SOBREVIVÊNCIA REALISTA • EXPLORAÇÃO • CONSTRUÇÃO</p>
+        <p class="hero-tagline">Um mundo mais vivo, mais desafiador<br>e feito pra <em>você!</em></p>
       </div>
-      <div class="notice" id="notice" role="status"></div>
-    </section>
-    <nav class="nav" aria-label="Menu principal">
-      <button class="secondary active" data-tab="inicio">Início</button>
-      <button class="secondary" data-tab="modpack">Modpack</button>
-      <button class="secondary" data-tab="config">Configurações</button>
-      <button class="secondary" data-tab="sobre">Sobre</button>
-    </nav>
-    <section class="section" id="content">
-      <h3>Seu perfil de sobrevivência</h3>
-      <div class="grid">
-        <article class="card"><span class="icon">🌲</span><h3>Sobrevivência realista</h3><p>Foco em exploração, recursos, clima e progressão de sobrevivência.</p></article>
-        <article class="card"><span class="icon">🧰</span><h3>Modpack próprio</h3><p>Uma seleção de mods compatíveis será definida depois de escolhermos a versão do Minecraft.</p></article>
-      </div>
-    </section>
-  </main>
-  <footer>REALISTIC LAUNCHER é um projeto independente e não é afiliado à Mojang ou Microsoft.<br>Este protótipo visual não instala nem inicia o Minecraft.</footer>
+    </div>
+    <div class="action-row">
+      <article class="modpack-card">
+        <div class="thumb" aria-hidden="true">🏞️</div>
+        <div class="modpack-info"><h2>Meu Modpack <span class="pill">v0.1.0</span></h2>
+          <div class="stat">⬡ <span>Sobrevivência Realista</span></div>
+          <div class="stat">▥ <span><b>Em planejamento</b> • lista de mods</span></div>
+          <div class="stat">▣ <span>Criado por: EstevaoCraft</span></div>
+        </div>
+      </article>
+      <button class="play-btn" id="play"><span>▶ &nbsp;Jogar</span></button>
+      <button class="options-btn" data-page="config"><span>☷</span>Opções</button>
+    </div>
+    <div class="lower">
+      <section class="panel">
+        <h2>▤ Nosso Plano</h2>
+        <ol class="plan-list">
+          <li><span class="num">1</span><span>Criar a base do launcher (interface + funções)</span></li>
+          <li><span class="num">2</span><span>Preparar o modpack (mods + configurações)</span></li>
+          <li><span class="num">3</span><span>Integrar tudo e testar</span></li>
+          <li><span class="num">4</span><span>Melhorar e personalizar</span></li>
+          <li><span class="num">5</span><span>Publicar e jogar! 🚀</span></li>
+        </ol>
+      </section>
+      <section class="panel">
+        <div class="steps-layout">
+          <div class="steps">
+            <h2>ϟ 1ª Etapa Prática: Criar o Launcher</h2>
+            <p>Vamos começar pela base do launcher, que vai gerenciar o jogo, os mods e o modpack.</p>
+            <h3>Passo a passo:</h3>
+            <ol>
+              <li>Preparar uma base compatível com Android.</li>
+              <li>Personalizar a interface (cores, logo e nome).</li>
+              <li>Organizar o modpack e suas configurações.</li>
+              <li>Testar e ajustar no celular.</li>
+            </ol>
+          </div>
+          <aside class="tools">
+            <h4>Ferramentas que vamos usar:</h4>
+            <div class="tool"><span>🤖</span><div>Launcher Android<br><small>(base compatível)</small></div></div>
+            <div class="tool"><span>📁</span><div>Gerenciador de arquivos<br><small>(mods e configs)</small></div></div>
+            <div class="tool"><span>🎨</span><div>Editor de imagens<br><small>(logo e interface)</small></div></div>
+          </aside>
+        </div>
+      </section>
+    </div>
+    <button class="bottom-cta" id="start">✓ &nbsp; Bora começar! 🚀</button>
+  </section>
+  <section class="page-section" id="modpacks">
+    <section class="panel"><h2>⬡ Modpacks</h2><p>Seu modpack de sobrevivência realista vai ser montado depois de escolhermos uma versão do Minecraft Java e uma base de mods compatível.</p><div class="modpack-card"><div class="thumb">🌲</div><div class="modpack-info"><h2>Sobrevivência Realista</h2><div class="stat">Status: <b>em planejamento</b></div><div class="stat">Mods: ainda não instalados</div></div></div><button class="bottom-cta" data-message="Vamos escolher a versão do Minecraft antes de selecionar mods compatíveis.">Planejar meu modpack</button></section>
+  </section>
+  <section class="page-section" id="config">
+    <section class="panel"><h2>⚙ Configurações</h2><p>Estas opções são demonstrativas nesta versão do protótipo.</p><label style="display:flex;gap:12px;align-items:center;margin:18px 0"><input type="checkbox" checked> Tema escuro vermelho</label><label style="display:flex;gap:12px;align-items:center;margin:18px 0"><input type="checkbox" checked> Efeitos visuais da interface</label><button class="bottom-cta" data-message="Preferências visuais salvas nesta demonstração.">Salvar preferências</button></section>
+  </section>
+  <section class="page-section" id="sobre">
+    <section class="panel"><h2>ⓘ Sobre o projeto</h2><p><b>REALISTIC LAUNCHER</b> é um projeto independente para planejar uma experiência de Minecraft Java com mods no Android.</p><p>Versão da interface: 0.2.0</p><p><b>Importante:</b> esta página é um protótipo visual. Ela ainda não instala nem executa Minecraft Java, autentica contas ou carrega mods.</p></section>
+  </section>
+  <section class="page-section" id="sair">
+    <section class="panel"><h2>Até a próxima!</h2><p>Não é necessário sair de uma página web. Você pode voltar para Início pelo menu.</p><button class="bottom-cta" data-page="inicio">Voltar ao início</button></section>
+  </section>
+</main>
 </div>
+<nav class="mobile-nav" aria-label="Navegação móvel">
+  <button class="active" data-page="inicio"><span>⌂</span>Início</button>
+  <button data-page="modpacks"><span>⬡</span>Modpacks</button>
+  <button data-page="config"><span>⚙</span>Config.</button>
+  <button data-page="sobre"><span>ⓘ</span>Sobre</button>
+</nav>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
-const content=document.getElementById('content');
-const notice=document.getElementById('notice');
-const pages={
- inicio:`<h3>Seu perfil de sobrevivência</h3><div class="grid"><article class="card"><span class="icon">🌲</span><h3>Sobrevivência realista</h3><p>Foco em exploração, recursos, clima e progressão de sobrevivência.</p></article><article class="card"><span class="icon">🧰</span><h3>Modpack próprio</h3><p>Uma seleção de mods compatíveis será definida depois de escolhermos a versão do Minecraft.</p></article></div>`,
- modpack:`<h3>Meu Modpack</h3><div class="list"><div class="item"><span class="badge">01</span><div><strong>Versão do Minecraft</strong><small>A definir conforme compatibilidade com Android e mods.</small></div></div><div class="item"><span class="badge">02</span><div><strong>Loader de mods</strong><small>Vamos escolher Fabric ou Forge de acordo com os mods desejados.</small></div></div><div class="item"><span class="badge">03</span><div><strong>Lista de mods</strong><small>Prioridade para exploração, natureza e otimização do desempenho.</small></div></div></div>`,
- config:`<h3>Configurações</h3><div class="list"><div class="item"><span class="badge">RAM</span><div><strong>Memória do jogo</strong><small>Será ajustada de acordo com a memória disponível no seu celular.</small></div></div><div class="item"><span class="badge">FPS</span><div><strong>Desempenho</strong><small>Vamos priorizar estabilidade antes de adicionar muitos mods.</small></div></div></div>`,
- sobre:`<h3>Sobre o projeto</h3><div class="card"><h3>REALISTIC LAUNCHER 0.1</h3><p>Protótipo de interface feito como primeiro passo do projeto. O próximo passo é preparar o ambiente Android e planejar a integração com um launcher Java compatível.</p></div>`
-};
-document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{
- document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));
- content.innerHTML=pages[b.dataset.tab];
- notice.style.display='none';
-}));
-document.getElementById('mods').addEventListener('click',()=>{
- document.querySelector('[data-tab="modpack"]').click();
- content.scrollIntoView({behavior:'smooth',block:'start'});
-});
-document.getElementById('play').addEventListener('click',()=>{
- notice.textContent='O botão está funcionando no protótipo! Para iniciar o jogo de verdade, ainda precisamos integrar um motor/launcher Java compatível e a instalação legítima do Minecraft.';
- notice.style.display='block';
-});
-</script>
-
-<script>
-if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
-  window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch(() => {}));
+const toast = document.getElementById('toast');
+let toastTimer;
+function message(text){toast.textContent=text;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),3200)}
+function showPage(page){
+ document.querySelectorAll('.page-section').forEach(s=>s.classList.toggle('visible',s.id===page));
+ document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===page));
+ window.scrollTo({top:0,behavior:'smooth'});
 }
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+document.querySelectorAll('[data-message]').forEach(b=>b.addEventListener('click',()=>message(b.dataset.message)));
+document.getElementById('play').addEventListener('click',()=>message('O motor do Minecraft ainda não está conectado. Próxima etapa: preparar a base Android.'));
+document.getElementById('start').addEventListener('click',()=>{showPage('modpacks');message('Vamos planejar o modpack antes de instalar os mods!')});
+if('serviceWorker' in navigator && location.protocol.startsWith('http')){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}))}
 </script>
 </body>
 </html>
